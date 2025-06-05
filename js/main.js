@@ -1,129 +1,125 @@
 // Esperamos a que el DOM esté completamente cargado
-document.addEventListener("DOMContentLoaded", function() {
-  /* ================================
+document.addEventListener("DOMContentLoaded", function () {
+  /* ============================================
      Animación de Objetos
-  ================================ */
-  const animacionElement = document.getElementById("animacion");
-
-  // Animación 1: Movimiento hacia la derecha y cambio de color
-  gsap.to(animacionElement, {
+     Se anima el cuadrado (div #animacion) cambiando posición y color.
+  ============================================ */
+  gsap.to("#animacion", {
     duration: 2,
     x: 300,
     backgroundColor: "#e74c3c",
-    ease: "power1.inOut",
-    onComplete: function() {
-      console.log("Animación simple completada.");
-    }
+    ease: "power2.inOut"
   });
 
-  // Animación 2: Movimiento inverso con rebote
-  gsap.from(animacionElement, {
+  gsap.from("#animacion", {
     duration: 2,
     x: -300,
     delay: 2,
-    ease: "bounce.out",
-    onComplete: function() {
-      console.log("Animación 'from' completada.");
-    }
+    ease: "power2.out"
   });
 
-  // Animación 3: Timeline secuencial con rotación y escalado
-  const timeline = gsap.timeline({
-    repeat: -1, // Repetir indefinidamente
-    yoyo: true, // Invertir la animación en cada ciclo
-    delay: 4    // Iniciar el timeline después de 4 segundos
-  });
-  timeline
-    .to(animacionElement, {
-      duration: 1,
-      rotation: 360,
-      ease: "power2.inOut",
-      onStart: function() {
-        console.log("Animación de rotación iniciada.");
-      }
-    })
-    .to(animacionElement, {
-      duration: 1,
-      scale: 1.5,
-      ease: "elastic.out(1, 0.3)",
-      onComplete: function() {
-        console.log("Animación de escalado completada.");
-      }
-    })
-    .to(animacionElement, {
-      duration: 1,
-      scale: 1,
-      ease: "back.out(1.7)",
-      onComplete: function() {
-        console.log("Animación de retorno completada.");
-      }
-    });
-
-  /* ================================
+  /* ============================================
      Animación de Texto
-  ================================ */
-  const texto = document.getElementById("animacion-texto");
-  
-  // Separamos el contenido en palabras
-  const words = texto.innerText.split(" ");
-  
-  // Limpiamos el contenido original
-  texto.innerHTML = "";
-
-  // Por cada palabra, creamos un span con clase "word" y lo agregamos al párrafo
-  words.forEach((word) => {
-    let span = document.createElement("span");
-    span.className = "word";
-    span.innerText = word; // El espacio entre palabras lo manejamos con CSS (margin-right)
-    // Estado inicial: baja opacidad y efecto de desenfoque
+     Se separa el texto en palabras y se anima cada una, pasando de opacidad 0 y desenfoque a una visualización nítida.
+  ============================================ */
+  const textoElem = document.getElementById("animacion-texto");
+  const palabras = textoElem.innerText.split(" ");
+  textoElem.innerHTML = "";
+  palabras.forEach(word => {
+    const span = document.createElement("span");
+    span.classList.add("word");
+    span.innerText = word + " "; // Añadimos un espacio para separar visualmente
+    // Estado inicial: baja opacidad y desenfoque
     span.style.opacity = 0;
     span.style.filter = "blur(4px)";
-    texto.appendChild(span);
+    textoElem.appendChild(span);
   });
-
-  // Seleccionamos todos los spans de palabras
-  const wordSpans = texto.querySelectorAll(".word");
-
-  // Animación de aparición de texto, palabra por palabra
-  gsap.to(wordSpans, {
+  gsap.to(".word", {
     duration: 1,
     opacity: 1,
     filter: "blur(0px)",
     ease: "power2.out",
-    stagger: 0.2, // Intervalo entre cada palabra
-    delay: 1      // Demora para iniciar la animación del texto
+    stagger: 0.2,
+    delay: 1
   });
 
-  /* ================================
+  /* ============================================
      Animación de Cuadrados
-  ================================ */
-  // Obtenemos cada uno de los cuadrados según su ID
-  const cuadradoRojo = document.getElementById("cuadrado-rojo");
-  const cuadradoVerde = document.getElementById("cuadrado-verde");
-  const cuadradoAzul = document.getElementById("cuadrado-azul");
+     Se crea un timeline para animar tres cuadrados en el siguiente orden:
+       1. Cuadrado Violeta (id "cuadrado-rojo"): se mueve de izquierda a derecha.
+       2. Cuadrado Verde (id "cuadrado-verde"): se mueve verticalmente con efecto yoyo.
+       3. Cuadrado Azul (id "cuadrado-azul"): se desliza en diagonal.
+  ============================================ */
+  const timelineSquares = gsap.timeline({ delay: 1 });
+  
+  timelineSquares.fromTo(
+    "#cuadrado-rojo",
+    { x: -150 },
+    { duration: 1, x: 150, ease: "power2.out" }
+  );
+  
+  timelineSquares.fromTo(
+    "#cuadrado-verde",
+    { y: -150 },
+    { duration: 1, y: 150, ease: "power2.inOut", repeat: 1, yoyo: true }
+  );
+  
+  timelineSquares.fromTo(
+    "#cuadrado-azul",
+    { x: -100, y: -100 },
+    { duration: 1, x: 100, y: 100, ease: "power2.inOut" }
+  );
 
-  // Creamos un timeline específico para los cuadrados
-  const squaresTimeline = gsap.timeline({
-    delay: 2  // Demora inicial para visualizar el efecto en secuencia
+  /* ============================================
+     Animación al Hacer Scroll
+     Con ScrollTrigger, el elemento #scroll-box se anima al alcanzar la vista.
+  ============================================ */
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    "#scroll-box",
+    { opacity: 0, y: 50 },
+    {
+      duration: 1,
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#scroll-box",
+        start: "top 80%", // Inicia cuando la parte superior llegue al 80% de la ventana
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
+
+  /* ============================================
+     Animación con Hover
+     Al pasar el mouse sobre el elemento #hover-box, se escala y cambia de color.
+  ============================================ */
+  const hoverBox = document.getElementById("hover-box");
+  hoverBox.addEventListener("mouseenter", function () {
+    gsap.to(hoverBox, { duration: 0.5, scale: 1.2, backgroundColor: "#e67e22" });
+  });
+  hoverBox.addEventListener("mouseleave", function () {
+    gsap.to(hoverBox, { duration: 0.5, scale: 1, backgroundColor: "#f1c40f" });
   });
 
-  squaresTimeline
-    // 1. Cuadrado Rojo: Se mueve de izquierda a derecha.
-    .fromTo(
-      cuadradoRojo,
-      { x: -150 },
-      { duration: 1, x: 150, ease: "power2.out" }
-    )
-    // 2. Cuadrado Verde: Se desplaza de arriba hacia abajo con efecto yoyo.
-    .fromTo(
-      cuadradoVerde,
-      { y: -150 },
-      { duration: 1, y: 150, ease: "power2.inOut", repeat: 1, yoyo: true }
-    )
-    // 3. Cuadrado Azul: Se desliza en diagonal (de la esquina superior izquierda a la inferior derecha).
-    .fromTo(
-      cuadradoAzul,
-      { x: -100, y: -100 },
-      { duration: 1, x: 100, y: 100, ease: "power2.inOut" }
-    );
+  /* ============================================
+     Control de Timeline con Botones
+     Se crea un timeline controlable para el elemento #control-box.
+     Los botones permiten reproducir, pausar o invertir la animación.
+  ============================================ */
+  let controlTimeline = gsap.timeline({ paused: true });
+  controlTimeline
+    .to("#control-box", { duration: 1, x: 200, ease: "power2.inOut" })
+    .to("#control-box", { duration: 1, rotation: 360, ease: "power2.inOut" }, "-=0.5");
+
+  document.getElementById("play-btn").addEventListener("click", () => {
+    controlTimeline.play();
+  });
+  document.getElementById("pause-btn").addEventListener("click", () => {
+    controlTimeline.pause();
+  });
+  document.getElementById("reverse-btn").addEventListener("click", () => {
+    controlTimeline.reverse();
+  });
 });
