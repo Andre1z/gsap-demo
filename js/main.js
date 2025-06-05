@@ -1,15 +1,11 @@
 // Esperamos a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
-  // Seleccionamos el elemento que se animará
+  /* ================================
+     Animación de Objetos
+  ================================ */
   const animacionElement = document.getElementById("animacion");
 
-  console.log("Documento cargado, iniciando animaciones con GSAP.");
-
-  /* 
-    Ejemplo 1: Animación sencilla con gsap.to
-    Se mueve el elemento 300 píxeles a la derecha, 
-    cambia su color de fondo a rojo y utiliza una función de easing.
-  */
+  // Animación 1: Movimiento hacia la derecha y cambio de color
   gsap.to(animacionElement, {
     duration: 2,
     x: 300,
@@ -20,11 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  /* 
-    Ejemplo 2: Animación desde un estado inicial con gsap.from
-    Después de una demora de 2 segundos, el elemento inicia desde 300 píxeles
-    a la izquierda y se posiciona en su ubicación original con efecto de rebote.
-  */
+  // Animación 2: Movimiento inverso con rebote
   gsap.from(animacionElement, {
     duration: 2,
     x: -300,
@@ -35,18 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  /* 
-    Ejemplo 3: Animación compleja usando un timeline
-    Se encadenan varias animaciones: rotación completa, escalado hacia arriba y
-    luego un retorno a la escala normal. El timeline se repite indefinidamente y
-    se invierte en cada ciclo (efecto yoyo).
-  */
+  // Animación 3: Timeline secuencial con rotación y escalado
   const timeline = gsap.timeline({
-    repeat: -1,   // Repetir infinitamente
-    yoyo: true,   // Invertir el timeline en cada repetición
-    delay: 4      // Inicia el timeline después de 4 segundos
+    repeat: -1, // Repetir indefinidamente
+    yoyo: true, // Invertir la animación en cada ciclo
+    delay: 4    // Iniciar el timeline después de 4 segundos
   });
-
   timeline
     .to(animacionElement, {
       duration: 1,
@@ -72,4 +58,40 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Animación de retorno completada.");
       }
     });
+
+  /* ================================
+     Animación de Texto
+  ================================ */
+  const texto = document.getElementById("animacion-texto");
+  
+  // Separamos el contenido en palabras
+  const words = texto.innerText.split(" ");
+  
+  // Limpiamos el contenido original
+  texto.innerHTML = "";
+
+  // Por cada palabra, creamos un span y lo agregamos al elemento
+  words.forEach((word) => {
+    let span = document.createElement("span");
+    span.className = "word";
+    // Se añade la palabra seguida de un espacio para mantener la separación
+    span.innerText = word + " ";
+    // Condición inicial: baja opacidad y desenfoque (esto también se podría definir en CSS)
+    span.style.opacity = 0;
+    span.style.filter = "blur(4px)";
+    texto.appendChild(span);
+  });
+
+  // Seleccionamos todos los spans creados
+  const wordSpans = texto.querySelectorAll(".word");
+
+  // Animamos cada palabra de forma escalonada para que aparezca palabra por palabra
+  gsap.to(wordSpans, {
+    duration: 1,
+    opacity: 1,
+    filter: "blur(0px)",
+    ease: "power2.out",
+    stagger: 0.2, // Descanso entre cada palabra
+    delay: 1      // Demora para iniciar la animación de texto
+  });
 });
