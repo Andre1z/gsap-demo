@@ -141,12 +141,15 @@ h2 {
 }
 
 .carousel-item {
-  width: 100px;
-  height: 100px;
-  background: #3498db;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
+  width: 80px;     /* Igual que la dimensión de los cuadrados anteriores */
+  height: 80px;    /* Igual que la dimensión de los cuadrados anteriores */
+  overflow: hidden; /* Para recortar la imagen si es necesario */
+  opacity: 0;      /* Inicialmente oculto, se animará con GSAP */
+}
+
+/* Ajuste para que las imágenes se adapten correctamente */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
