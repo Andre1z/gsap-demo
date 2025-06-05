@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Texto
-     Se separa el contenido de #animacion-texto en palabras y se envuelve cada una en un <span> 
+     Se separa el contenido de #animacion-texto en palabras y se envuelve cada una en <span> 
      para luego animarlas de manera escalonada (stagger) desde baja opacidad y desenfoque a su estado natural.
   ============================================ */
   const textoElem = document.getElementById("animacion-texto");
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación con Click
-     Al hacer click sobre #click-box, se anima una escala (rebote) para crear un efecto interactivo.
+     Al hacer click sobre #click-box, se anima una escala (efecto rebote) para crear un efecto interactivo.
   ============================================ */
   const clickBox = document.getElementById("click-box");
   if (clickBox) {
@@ -170,4 +170,40 @@ document.addEventListener("DOMContentLoaded", function () {
         .to(item, { duration: 1, opacity: 0, ease: "power2.inOut" }, "+=1");
     });
   }
+
+  /* ============================================
+     Animación de Fondo Gradiente
+     Se anima el fondo de la sección #gradient-animation para crear una transición continua en el gradiente.
+  ============================================ */
+  gsap.to("#gradient-animation", {
+    duration: 5,
+    backgroundPosition: "200% 0%",
+    ease: "none",
+    repeat: -1
+  });
+
+  /* ============================================
+     Efecto Parallax (Horizontal)
+     Con ScrollTrigger, el elemento #parallax-box se mueve de izquierda a derecha en función del scroll.
+  ============================================ */
+  gsap.to("#parallax-box", {
+    x: 50,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#parallax-effect",
+      scrub: true
+    }
+  });
+
+  /* ============================================
+     Animación de Botón Pulsante
+     El botón con id #pulsate-btn pulsa de forma continua.
+  ============================================ */
+  gsap.to("#pulsate-btn", {
+    scale: 1.1,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+    duration: 0.8
+  });
 });
