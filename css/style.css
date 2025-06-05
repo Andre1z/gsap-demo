@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header,
+section {
+  padding: 20px;
+}
+
+section {
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  color: #333;
+}
+
+/* Animación de Objetos */
+#animacion {
+  width: 100px;
+  height: 100px;
+  background: #3498db;
+  margin: 50px auto;
+}
+
+/* Animación de Texto */
+#animacion-texto {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  margin: 30px;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Animación de Cuadrados */
+.cuadrados-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.cuadrado {
+  width: 80px;
+  height: 80px;
+}
+
+/* Colores para cada cuadrado */
+#cuadrado-rojo {
+  background: #d33ce7;  /* Violeta */
+}
+
+#cuadrado-verde {
+  background: #2ecc71;
+}
+
+#cuadrado-azul {
+  background: #3498db;
+}
+
+/* Animación al Hacer Scroll */
+#scroll-box {
+  width: 200px;
+  height: 200px;
+  background: #9b59b6;
+  margin: 50px auto;
+  opacity: 0;  /* Inicialmente invisible */
+}
+
+/* Animación con Hover */
+#hover-box {
+  width: 150px;
+  height: 150px;
+  background: #f1c40f;
+  margin: 50px auto;
+}
+
+/* Control de Timeline */
+#control-box {
+  width: 100px;
+  height: 100px;
+  background: #1abc9c;
+  margin: 30px auto;
+}
+
+#timeline-controls-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#timeline-controls-buttons button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}
