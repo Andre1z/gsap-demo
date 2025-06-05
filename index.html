@@ -23,6 +23,7 @@
   <section id="objetos">
     <h2>Animación de Objetos</h2>
     <div id="animacion"></div>
+    <button class="info-btn" data-section="objetos">📗</button>
   </section>
 
   <!-- Animación de Texto -->
@@ -31,6 +32,7 @@
     <p id="animacion-texto">
       Bienvenidos a la demostración de animaciones con GSAP, donde cada palabra aparece de manera suave y con un efecto de desenfoque que se desvanece.
     </p>
+    <button class="info-btn" data-section="texto-animado">📗</button>
   </section>
 
   <!-- Animación de Cuadrados -->
@@ -50,6 +52,7 @@
       <div id="cuadrado-verde" class="cuadrado"></div>
       <div id="cuadrado-azul" class="cuadrado"></div>
     </div>
+    <button class="info-btn" data-section="animacion-cuadrados">📗</button>
   </section>
 
   <!-- Animación al Hacer Scroll -->
@@ -59,6 +62,7 @@
       El siguiente elemento se animará al entrar en la vista: incrementa su opacidad y se desplaza a su posición original.
     </p>
     <div id="scroll-box"></div>
+    <button class="info-btn" data-section="scroll-animation">📗</button>
   </section>
 
   <!-- Animación con Hover -->
@@ -68,6 +72,7 @@
       Pasa el mouse sobre el siguiente elemento para ver cómo se escala y cambia de color, retornando a su estado original al quitar el cursor.
     </p>
     <div id="hover-box"></div>
+    <button class="info-btn" data-section="hover-animation">📗</button>
   </section>
 
   <!-- Control de Timeline -->
@@ -82,6 +87,7 @@
       <button id="pause-btn">Pause</button>
       <button id="reverse-btn">Reverse</button>
     </div>
+    <button class="info-btn" data-section="timeline-controls">📗</button>
   </section>
 
   <!-- Animación de SVG: Dibujo de Línea -->
@@ -90,16 +96,18 @@
     <svg id="svg-dibujo" width="400" height="150" xmlns="http://www.w3.org/2000/svg">
       <path d="M10,75 Q100,10 200,75 T390,75" fill="none" stroke="#e74c3c" stroke-width="4" />
     </svg>
+    <button class="info-btn" data-section="svg-animation">📗</button>
   </section>
 
-  <!-- Animación con Click (se muestra imagen desde assets/image1) -->
+  <!-- Animación con Click (Imagen desde assets/image1) -->
   <section id="click-animation">
     <h2>Animación con Click</h2>
     <p>Haz click en la imagen para verla rebotar.</p>
     <img id="click-box" src="assets/image1.jpg" alt="Imagen de Click" />
+    <button class="info-btn" data-section="click-animation">📗</button>
   </section>
 
-  <!-- Animación de Carousel (se muestran imágenes desde assets/image2, image3 e image4) -->
+  <!-- Animación de Carousel (Imágenes desde assets/image2, image3 e image4) -->
   <section id="carousel">
     <h2>Animación de Carousel</h2>
     <div class="carousel-container">
@@ -113,12 +121,14 @@
         <img src="assets/image4.jpg" alt="Imagen 4" />
       </div>
     </div>
+    <button class="info-btn" data-section="carousel">📗</button>
   </section>
 
   <!-- Animación de Fondo Gradiente -->
   <section id="gradient-animation">
     <h2>Animación de Fondo Gradiente</h2>
     <p>Observa cómo el fondo de esta sección cambia de gradiente de forma continua.</p>
+    <button class="info-btn" data-section="gradient-animation">📗</button>
   </section>
 
   <!-- Efecto Parallax (Horizontal) -->
@@ -126,6 +136,7 @@
     <h2>Efecto Parallax</h2>
     <p>Este bloque se mueve de izquierda a derecha al hacer scroll, creando un efecto parallax.</p>
     <div id="parallax-box"></div>
+    <button class="info-btn" data-section="parallax-effect">📗</button>
   </section>
 
   <!-- Animación de Botón Pulsante -->
@@ -133,6 +144,7 @@
     <h2>Animación de Botón Pulsante</h2>
     <p>Este botón pulsa de forma continua.</p>
     <button id="pulsate-btn">Púlsame</button>
+    <button class="info-btn" data-section="pulsate-button">📗</button>
   </section>
 
   <!-- Funciones Adicionales -->
@@ -145,12 +157,23 @@
       <button id="pause-all-btn">Pausar Todo</button>
       <button id="resume-all-btn">Reanudar Todo</button>
     </div>
+    <button class="info-btn" data-section="extras">📗</button>
   </section>
+
+  <!-- Modal de Información -->
+  <div id="info-modal">
+    <div class="modal-content">
+      <button class="close-modal">❌</button>
+      <div class="modal-body">
+        <!-- Aquí se cargará la información teórica y el código ejemplo -->
+      </div>
+    </div>
+  </div>
 
   <!-- Importamos GSAP y el plugin ScrollTrigger vía CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-  <!-- Nuestro archivo de JavaScript con la lógica de las animaciones y funciones adicionales -->
+  <!-- Nuestro archivo de JavaScript -->
   <script src="js/main.js"></script>
 </body>
 </html>
