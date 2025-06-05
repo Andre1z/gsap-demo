@@ -5,31 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GSAP Demo - Animaciones Combinadas</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* Estilos para la animación de texto */
-    #animacion-texto {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      text-align: center;
-      margin: 30px;
-    }
-    .word {
-      display: inline-block;
-      margin-right: 10px;
-    }
-    /* Estilos para la animación de cuadrados */
-    .cuadrados-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin: 20px;
-    }
-    .cuadrado {
-      width: 80px;
-      height: 80px;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -46,7 +21,7 @@
   <section id="objetos">
     <h2>Animación de Objetos</h2>
     <!-- Div de animación para objetos -->
-    <div id="animacion" style="width: 100px; height: 100px; background: #3498db; margin: 50px auto;"></div>
+    <div id="animacion"></div>
   </section>
 
   <section id="texto-animado">
@@ -68,14 +43,46 @@
       3. <strong>Cuadrado Azul:</strong> se desliza en diagonal, desde la esquina superior izquierda a la inferior derecha.
     </p>
     <div class="cuadrados-container">
-      <div id="cuadrado-rojo" class="cuadrado" style="background: #d33ce7;"></div>
-      <div id="cuadrado-verde" class="cuadrado" style="background: #2ecc71;"></div>
-      <div id="cuadrado-azul" class="cuadrado" style="background: #3498db;"></div>
+      <div id="cuadrado-rojo" class="cuadrado"></div>
+      <div id="cuadrado-verde" class="cuadrado"></div>
+      <div id="cuadrado-azul" class="cuadrado"></div>
+    </div>
+  </section>
+  
+  <!-- NUEVOS EJEMPLOS -->
+  
+  <section id="scroll-animation">
+    <h2>Animación al Hacer Scroll</h2>
+    <p>
+      El siguiente elemento se animará al entrar en la vista: incrementa su opacidad y se desplaza a su posición original.
+    </p>
+    <div id="scroll-box"></div>
+  </section>
+  
+  <section id="hover-animation">
+    <h2>Animación con Hover</h2>
+    <p>
+      Pasa el mouse sobre el siguiente elemento para ver cómo se escala y cambia de color, retornando a su estado original al quitar el cursor.
+    </p>
+    <div id="hover-box"></div>
+  </section>
+  
+  <section id="timeline-controls">
+    <h2>Control de Timeline</h2>
+    <p>
+      En este ejemplo, se controla la animación de un elemento mediante botones para reproducir, pausar o invertir el timeline.
+    </p>
+    <div id="control-box"></div>
+    <div id="timeline-controls-buttons">
+      <button id="play-btn">Play</button>
+      <button id="pause-btn">Pause</button>
+      <button id="reverse-btn">Reverse</button>
     </div>
   </section>
 
-  <!-- Importamos GSAP vía CDN -->
+  <!-- Importamos GSAP y el plugin ScrollTrigger vía CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   <!-- Nuestro archivo de JavaScript con la lógica de las animaciones -->
   <script src="js/main.js"></script>
 </body>
