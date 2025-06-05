@@ -155,8 +155,8 @@ Puedes modificar los parámetros de GSAP (duraciones, easing, desplazamientos, e
 
 El proyecto utiliza las siguientes bibliotecas a través de CDN:
 
-- ```GSAP 3.11.5 https://greensock.com/gsap/```
-- ```ScrollTrigger https://greensock.com/scrolltrigger/```
+- [GSAP 3.11.5](https://greensock.com/gsap/)
+- [ScrollTrigger](https://greensock.com/scrolltrigger/)
 
 ## Licencia
 
