@@ -10,22 +10,22 @@
   <header>
     <h1>GSAP Demo</h1>
   </header>
-
-  <!-- Sección de Teoría -->
+  
+  <!-- Sección de Teoría (sin botón info) -->
   <section id="teoria">
     <h2>Teoría</h2>
     <p>
       GSAP (GreenSock Animation Platform) es una herramienta potente para crear animaciones web de alto rendimiento y con gran control, tanto en objetos como en textos.
     </p>
   </section>
-
+  
   <!-- Animación de Objetos -->
   <section id="objetos">
     <h2>Animación de Objetos</h2>
     <div id="animacion"></div>
     <button class="info-btn" data-section="objetos">📗</button>
   </section>
-
+  
   <!-- Animación de Texto -->
   <section id="texto-animado">
     <h2>Animación de Texto</h2>
@@ -34,18 +34,15 @@
     </p>
     <button class="info-btn" data-section="texto-animado">📗</button>
   </section>
-
+  
   <!-- Animación de Cuadrados -->
   <section id="animacion-cuadrados">
     <h2>Animación de Cuadrados</h2>
     <p>
       En el siguiente timeline se muestra el orden de animación:
-      <br>
-      1. <strong>Cuadrado Violeta:</strong> se desplaza de izquierda a derecha.
-      <br>
-      2. <strong>Cuadrado Verde:</strong> se mueve de arriba hacia abajo <em>(con efecto yoyo)</em>.
-      <br>
-      3. <strong>Cuadrado Azul:</strong> se desliza en diagonal, desde la esquina superior izquierda a la inferior derecha.
+      <br>1. <strong>Cuadrado Violeta:</strong> se desplaza de izquierda a derecha.
+      <br>2. <strong>Cuadrado Verde:</strong> se mueve de arriba hacia abajo <em>(con efecto yoyo)</em>.
+      <br>3. <strong>Cuadrado Azul:</strong> se desliza en diagonal, desde la esquina superior izquierda a la inferior derecha.
     </p>
     <div class="cuadrados-container">
       <div id="cuadrado-rojo" class="cuadrado"></div>
@@ -54,7 +51,7 @@
     </div>
     <button class="info-btn" data-section="animacion-cuadrados">📗</button>
   </section>
-
+  
   <!-- Animación al Hacer Scroll -->
   <section id="scroll-animation">
     <h2>Animación al Hacer Scroll</h2>
@@ -64,7 +61,7 @@
     <div id="scroll-box"></div>
     <button class="info-btn" data-section="scroll-animation">📗</button>
   </section>
-
+  
   <!-- Animación con Hover -->
   <section id="hover-animation">
     <h2>Animación con Hover</h2>
@@ -74,7 +71,7 @@
     <div id="hover-box"></div>
     <button class="info-btn" data-section="hover-animation">📗</button>
   </section>
-
+  
   <!-- Control de Timeline -->
   <section id="timeline-controls">
     <h2>Control de Timeline</h2>
@@ -89,7 +86,7 @@
     </div>
     <button class="info-btn" data-section="timeline-controls">📗</button>
   </section>
-
+  
   <!-- Animación de SVG: Dibujo de Línea -->
   <section id="svg-animation">
     <h2>Animación de SVG: Dibujo de Línea</h2>
@@ -98,16 +95,16 @@
     </svg>
     <button class="info-btn" data-section="svg-animation">📗</button>
   </section>
-
-  <!-- Animación con Click (Imagen desde assets/image1) -->
+  
+  <!-- Animación con Click (usa imagen desde assets/image1) -->
   <section id="click-animation">
     <h2>Animación con Click</h2>
     <p>Haz click en la imagen para verla rebotar.</p>
     <img id="click-box" src="assets/image1.jpg" alt="Imagen de Click" />
     <button class="info-btn" data-section="click-animation">📗</button>
   </section>
-
-  <!-- Animación de Carousel (Imágenes desde assets/image2, image3 e image4) -->
+  
+  <!-- Animación de Carousel (usa imágenes desde assets/image2, image3 e image4) -->
   <section id="carousel">
     <h2>Animación de Carousel</h2>
     <div class="carousel-container">
@@ -123,14 +120,14 @@
     </div>
     <button class="info-btn" data-section="carousel">📗</button>
   </section>
-
+  
   <!-- Animación de Fondo Gradiente -->
   <section id="gradient-animation">
     <h2>Animación de Fondo Gradiente</h2>
     <p>Observa cómo el fondo de esta sección cambia de gradiente de forma continua.</p>
     <button class="info-btn" data-section="gradient-animation">📗</button>
   </section>
-
+  
   <!-- Efecto Parallax (Horizontal) -->
   <section id="parallax-effect">
     <h2>Efecto Parallax</h2>
@@ -138,7 +135,7 @@
     <div id="parallax-box"></div>
     <button class="info-btn" data-section="parallax-effect">📗</button>
   </section>
-
+  
   <!-- Animación de Botón Pulsante -->
   <section id="pulsate-button">
     <h2>Animación de Botón Pulsante</h2>
@@ -146,7 +143,7 @@
     <button id="pulsate-btn">Púlsame</button>
     <button class="info-btn" data-section="pulsate-button">📗</button>
   </section>
-
+  
   <!-- Funciones Adicionales -->
   <section id="extras">
     <h2>Funciones Adicionales</h2>
@@ -159,18 +156,18 @@
     </div>
     <button class="info-btn" data-section="extras">📗</button>
   </section>
-
+  
   <!-- Modal de Información -->
   <div id="info-modal">
     <div class="modal-content">
       <button class="close-modal">❌</button>
       <div class="modal-body">
-        <!-- Aquí se cargará la información teórica y el código ejemplo -->
+        <!-- La información se cargará aquí -->
       </div>
     </div>
   </div>
-
-  <!-- Importamos GSAP y el plugin ScrollTrigger vía CDN -->
+  
+  <!-- Importamos GSAP y ScrollTrigger vía CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   <!-- Nuestro archivo de JavaScript -->

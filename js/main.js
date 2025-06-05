@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "objetos": {
       title: "Animación de Objetos",
       content: `<p>Se anima un elemento cambiando su posición y color.</p>
-<pre><code>gsap.to("#animacion", {duration: 2, x: 300, backgroundColor: "#e74c3c"});</code></pre>`
+<pre><code>gsap.to("#animacion", {duration:2, x:300, backgroundColor:"#e74c3c"});</code></pre>`
     },
     "texto-animado": {
       title: "Animación de Texto",
@@ -209,12 +209,15 @@ gsap.to(".word", {stagger:0.2, opacity:1});</code></pre>`
     "animacion-cuadrados": {
       title: "Animación de Cuadrados",
       content: `<p>Se utiliza un timeline para orquestar los movimientos de los cuadrados.</p>
-<pre><code>gsap.timeline().to("#cuadrado-rojo", {...}).to("#cuadrado-verde", {...});</code></pre>`
+<pre><code>gsap.timeline()
+  .to("#cuadrado-rojo", {duration:1, x:150})
+  .to("#cuadrado-verde", {duration:1, y:150, repeat:1, yoyo:true})
+  .to("#cuadrado-azul", {duration:1, x:100, y:100});</code></pre>`
     },
     "scroll-animation": {
       title: "Animación al Hacer Scroll",
       content: `<p>El elemento se anima al entrar en la vista gracias a ScrollTrigger.</p>
-<pre><code>gsap.fromTo("#scroll-box", {opacity:0}, {opacity:1, scrollTrigger:{...}});</code></pre>`
+<pre><code>gsap.fromTo("#scroll-box", {opacity:0, y:50}, {opacity:1, y:0, scrollTrigger:{start:"top 80%"}});</code></pre>`
     },
     "hover-animation": {
       title: "Animación con Hover",
@@ -228,8 +231,7 @@ gsap.to(".word", {stagger:0.2, opacity:1});</code></pre>`
       content: `<p>Se controlan las animaciones mediante botones para reproducir, pausar o invertir el timeline.</p>
 <pre><code>timeline.play();
 timeline.pause();
-timeline.reverse();
-</code></pre>`
+timeline.reverse();</code></pre>`
     },
     "svg-animation": {
       title: "Animación de SVG: Dibujo de Línea",
@@ -240,38 +242,35 @@ timeline.reverse();
       title: "Animación con Click",
       content: `<p>La imagen se anima con un efecto de rebote al hacer click.</p>
 <pre><code>clickBox.addEventListener("click", () => {
-  gsap.fromTo(clickBox, {...});
+  gsap.fromTo(clickBox, {scale:1}, {scale:1.2, duration:0.5});
 });</code></pre>`
     },
     "carousel": {
       title: "Animación de Carousel",
-      content: `<p>Los elementos del carousel se muestran y ocultan de forma secuencial en un bucle infinito.</p>
-<pre><code>gsap.timeline({repeat:-1}).to(item, {opacity:1}).to(item, {opacity:0}, "+=1");
-</code></pre>`
+      content: `<p>Los elementos del carousel se muestran y ocultan secuencialmente en un loop infinito.</p>
+<pre><code>gsap.timeline({repeat:-1})
+  .to(item, {duration:1, opacity:1})
+  .to(item, {duration:1, opacity:0}, "+=1");</code></pre>`
     },
     "gradient-animation": {
       title: "Animación de Fondo Gradiente",
-      content: `<p>El fondo cambia gradualmente mediante movimientos en la posición de fondo.</p>
-<pre><code>gsap.to("#gradient-animation", {backgroundPosition:"200% 0%", repeat:-1});
-</code></pre>`
+      content: `<p>El fondo cambia gradualmente mediante movimientos en la posición del gradiente.</p>
+<pre><code>gsap.to("#gradient-animation", {backgroundPosition:"200% 0%", repeat:-1});</code></pre>`
     },
     "parallax-effect": {
       title: "Efecto Parallax",
       content: `<p>El bloque se mueve de izquierda a derecha al hacer scroll para crear un efecto parallax.</p>
-<pre><code>gsap.to("#parallax-box", {x:50, scrollTrigger:{scrub:true}});
-</code></pre>`
+<pre><code>gsap.to("#parallax-box", {x:50, scrollTrigger:{scrub:true}});</code></pre>`
     },
     "pulsate-button": {
       title: "Animación de Botón Pulsante",
       content: `<p>El botón pulsa de forma continua para llamar la atención.</p>
-<pre><code>gsap.to("#pulsate-btn", {scale:1.1, repeat:-1, yoyo:true});
-</code></pre>`
+<pre><code>gsap.to("#pulsate-btn", {scale:1.1, repeat:-1, yoyo:true});</code></pre>`
     },
     "extras": {
       title: "Funciones Adicionales",
       content: `<p>Incluye controles globales para resetear animaciones, alternar modo oscuro y pausar/reanudar todas las animaciones.</p>
-<pre><code>document.getElementById("darkmode-btn").addEventListener("click", ...);
-</code></pre>`
+<pre><code>document.getElementById("darkmode-btn").addEventListener("click", ...);</code></pre>`
     }
   };
 
@@ -293,13 +292,12 @@ timeline.reverse();
       }
     });
   });
-
   closeModalBtn.addEventListener("click", function () {
     modal.style.display = "none";
   });
 
   /* ============================================
-     Funciones Adicionales (Reset, Modo Oscuro, Pausar/Reanudar)
+     Funciones Adicionales (Reset, Modo Oscuro, Pausa/Reanuda)
   ============================================ */
   document.getElementById("reset-btn").addEventListener("click", function () {
     location.reload();
