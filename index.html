@@ -92,14 +92,14 @@
     </svg>
   </section>
 
-  <!-- Animación con Click (Imagen de assets/image1) -->
+  <!-- Animación con Click (se muestra imagen desde assets/image1) -->
   <section id="click-animation">
     <h2>Animación con Click</h2>
     <p>Haz click en la imagen para verla rebotar.</p>
     <img id="click-box" src="assets/image1.jpg" alt="Imagen de Click" />
   </section>
 
-  <!-- Animación de Carousel (Imágenes de assets/image2, image3 e image4) -->
+  <!-- Animación de Carousel (se muestran imágenes desde assets/image2, image3 e image4) -->
   <section id="carousel">
     <h2>Animación de Carousel</h2>
     <div class="carousel-container">
@@ -121,10 +121,10 @@
     <p>Observa cómo el fondo de esta sección cambia de gradiente de forma continua.</p>
   </section>
 
-  <!-- Efecto Parallax -->
+  <!-- Efecto Parallax (Horizontal) -->
   <section id="parallax-effect">
     <h2>Efecto Parallax</h2>
-    <p>Este bloque se mueve lentamente cuando haces scroll, creando un efecto parallax.</p>
+    <p>Este bloque se mueve de izquierda a derecha al hacer scroll, creando un efecto parallax.</p>
     <div id="parallax-box"></div>
   </section>
 
@@ -135,10 +135,22 @@
     <button id="pulsate-btn">Púlsame</button>
   </section>
 
+  <!-- Funciones Adicionales -->
+  <section id="extras">
+    <h2>Funciones Adicionales</h2>
+    <p>Controles globales para las animaciones:</p>
+    <div id="extra-buttons">
+      <button id="reset-btn">Reset Animaciones</button>
+      <button id="darkmode-btn">Modo Oscuro</button>
+      <button id="pause-all-btn">Pausar Todo</button>
+      <button id="resume-all-btn">Reanudar Todo</button>
+    </div>
+  </section>
+
   <!-- Importamos GSAP y el plugin ScrollTrigger vía CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-  <!-- Nuestro archivo de JavaScript con la lógica de las animaciones -->
+  <!-- Nuestro archivo de JavaScript con la lógica de las animaciones y funciones adicionales -->
   <script src="js/main.js"></script>
 </body>
 </html>

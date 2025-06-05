@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* ============================================
      Animación de Objetos
-     Se anima el cuadrado (div #animacion) cambiando posición y color.
   ============================================ */
   gsap.to("#animacion", {
     duration: 2,
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     backgroundColor: "#e74c3c",
     ease: "power2.inOut"
   });
-
   gsap.from("#animacion", {
     duration: 2,
     x: -300,
@@ -20,8 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Texto
-     Se separa el contenido de #animacion-texto en palabras y se envuelve cada una en <span> 
-     para luego animarlas de manera escalonada (stagger) desde baja opacidad y desenfoque a su estado natural.
   ============================================ */
   const textoElem = document.getElementById("animacion-texto");
   const palabras = textoElem.innerText.split(" ");
@@ -29,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   palabras.forEach(word => {
     const span = document.createElement("span");
     span.classList.add("word");
-    span.innerText = word + " "; // Se añade un espacio extra para separación visual
-    // Estado inicial: opacidad baja y desenfoque
+    span.innerText = word + " ";
     span.style.opacity = 0;
     span.style.filter = "blur(4px)";
     textoElem.appendChild(span);
@@ -46,10 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Cuadrados
-     Se crea un timeline para animar tres cuadrados en un orden definido:
-       1. Cuadrado Violeta (id "cuadrado-rojo"): se mueve de izquierda a derecha.
-       2. Cuadrado Verde (id "cuadrado-verde"): se mueve verticalmente, aplicándose un efecto yoyo.
-       3. Cuadrado Azul (id "cuadrado-azul"): se desliza en diagonal.
   ============================================ */
   const timelineSquares = gsap.timeline({ delay: 1 });
   timelineSquares.fromTo(
@@ -70,8 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación al Hacer Scroll
-     Usando ScrollTrigger, el elemento #scroll-box se animará (incrementará su opacidad y se desplazará) 
-     cuando entre en la vista (cuando su parte superior alcance el 80% de la ventana).
   ============================================ */
   gsap.registerPlugin(ScrollTrigger);
   gsap.fromTo(
@@ -92,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación con Hover
-     Cuando el usuario pasa el mouse sobre #hover-box, se escala y cambia de color, y al retirarlo vuelve a su estado original.
   ============================================ */
   const hoverBox = document.getElementById("hover-box");
   hoverBox.addEventListener("mouseenter", function () {
@@ -104,14 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Control de Timeline con Botones
-     Se crea un timeline (pausado por defecto) para el elemento #control-box, 
-     que se mueve y rota, y se controla mediante botones para reproducir, pausar o invertir la animación.
   ============================================ */
   let controlTimeline = gsap.timeline({ paused: true });
   controlTimeline
     .to("#control-box", { duration: 1, x: 200, ease: "power2.inOut" })
     .to("#control-box", { duration: 1, rotation: 360, ease: "power2.inOut" }, "-=0.5");
-
   document.getElementById("play-btn").addEventListener("click", () => {
     controlTimeline.play();
   });
@@ -124,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de SVG: Dibujo de Línea
-     Se anima el trazo de un <path> para simular un dibujo progresivo.
   ============================================ */
   const svgPath = document.querySelector("#svg-dibujo path");
   if (svgPath) {
@@ -136,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación con Click
-     Al hacer click sobre #click-box, se anima una escala (efecto rebote) para crear un efecto interactivo.
   ============================================ */
   const clickBox = document.getElementById("click-box");
   if (clickBox) {
@@ -158,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Carousel
-     Se crea un timeline en bucle que muestra y oculta secuencialmente cada ítem del carousel.
   ============================================ */
   const carouselItems = document.querySelectorAll(".carousel-item");
   if (carouselItems.length > 0) {
@@ -173,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Fondo Gradiente
-     Se anima el fondo de la sección #gradient-animation para crear una transición continua en el gradiente.
   ============================================ */
   gsap.to("#gradient-animation", {
     duration: 5,
@@ -184,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Efecto Parallax (Horizontal)
-     Con ScrollTrigger, el elemento #parallax-box se mueve de izquierda a derecha en función del scroll.
   ============================================ */
   gsap.to("#parallax-box", {
     x: 50,
@@ -197,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================
      Animación de Botón Pulsante
-     El botón con id #pulsate-btn pulsa de forma continua.
   ============================================ */
   gsap.to("#pulsate-btn", {
     scale: 1.1,
@@ -205,5 +184,29 @@ document.addEventListener("DOMContentLoaded", function () {
     yoyo: true,
     ease: "power1.inOut",
     duration: 0.8
+  });
+
+  /* ============================================
+     Funciones Adicionales
+  ============================================ */
+  
+  // Reset Animaciones: recarga la página
+  document.getElementById("reset-btn").addEventListener("click", function () {
+    location.reload();
+  });
+
+  // Alternar Modo Oscuro: alterna la clase "dark-mode" en el body
+  document.getElementById("darkmode-btn").addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Pausa todas las animaciones (globalTimeline)
+  document.getElementById("pause-all-btn").addEventListener("click", function () {
+    gsap.globalTimeline.pause();
+  });
+
+  // Reanuda todas las animaciones (globalTimeline)
+  document.getElementById("resume-all-btn").addEventListener("click", function () {
+    gsap.globalTimeline.resume();
   });
 });

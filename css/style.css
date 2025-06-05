@@ -3,6 +3,7 @@ body {
   font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  transition: background 0.3s, color 0.3s; /* Para alternar modo oscuro */
 }
 
 header,
@@ -122,7 +123,6 @@ h2 {
 #click-box {
   width: 150px;
   height: 150px;
-  background: #f39c12;
   margin: 20px auto;
   cursor: pointer;
 }
@@ -144,7 +144,7 @@ h2 {
   width: 80px;
   height: 80px;
   overflow: hidden;
-  opacity: 0; /* Inicialmente invisibles, se animarán con GSAP */
+  opacity: 0;
 }
 
 .carousel-item img {
@@ -166,7 +166,7 @@ h2 {
   align-items: center;
 }
 
-/* Efecto Parallax */
+/* Efecto Parallax (Horizontal) */
 #parallax-effect {
   padding: 20px;
   text-align: center;
@@ -197,4 +197,51 @@ h2 {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* Funciones Adicionales */
+#extras {
+  padding: 20px;
+  text-align: center;
+}
+
+#extra-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#extra-buttons button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  border-radius: 3px;
+}
+
+/* Modo Oscuro */
+.dark-mode {
+  background: #222;
+  color: #eee;
+}
+
+.dark-mode header,
+.dark-mode section {
+  background: #333;
+  border-color: #444;
+}
+
+.dark-mode button {
+  background: #555;
+  color: #fff;
+}
+
+/* Cambiar color de los h2 en modo oscuro */
+.dark-mode h2 {
+  color: #fff;
+}
+.dark-mode #parallax-effect {
+  background: #333;
 }
