@@ -7,7 +7,7 @@
   <!-- Estilos básicos: también puedes agregar reglas en css/style.css -->
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Ejemplo de estilos para la animación de texto */
+    /* Estilos para la animación de texto */
     #animacion-texto {
       font-size: 1.5rem;
       line-height: 2rem;
@@ -16,6 +16,7 @@
     }
     .word {
       display: inline-block;
+      margin-right: 10px; /* Espacio agregado entre cada palabra */
     }
   </style>
 </head>
@@ -33,7 +34,7 @@
 
   <section id="objetos">
     <h2>Animación de Objetos</h2>
-    <!-- Este div se usará para las animaciones de transformación -->
+    <!-- Div de animación para objetos -->
     <div id="animacion" style="width: 100px; height: 100px; background: #3498db; margin: 50px auto;"></div>
   </section>
 
@@ -44,9 +45,9 @@
     </p>
   </section>
 
-  <!-- Importamos GSAP a través de CDN -->
+  <!-- Importar GSAP vía CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <!-- Nuestro archivo JavaScript con la lógica de las animaciones -->
+  <!-- Nuestro archivo JavaScript donde se implementan las animaciones -->
   <script src="js/main.js"></script>
 </body>
 </html>
